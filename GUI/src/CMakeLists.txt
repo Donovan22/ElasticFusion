@@ -27,6 +27,7 @@ find_package(OpenNI2 REQUIRED)
 find_package(efusion REQUIRED)
 find_package(SuiteSparse REQUIRED)
 find_package(RealSense2 QUIET)
+find_package(freenect2 REQUIRED)
 
 message(STATUS "librealsense found: ${REALSENSE_FOUND}")
 option(WITH_REALSENSE "Build with Intel RealSense2 support?" ${REALSENSE2_FOUND})
@@ -47,6 +48,7 @@ include_directories(${Pangolin_INCLUDE_DIRS})
 include_directories(${CUDA_INCLUDE_DIRS})
 include_directories(${EFUSION_INCLUDE_DIR})
 include_directories(${OPENNI2_INCLUDE_DIR})
+include_directories(${freenect2_INCLUDE_DIR})
 
 
 file(GLOB srcs *.cpp)
@@ -87,6 +89,7 @@ target_link_libraries(ElasticFusion
                       ${SUITESPARSE_LIBRARIES}
                       ${BLAS_LIBRARIES}
                       ${LAPACK_LIBRARIES}
+		      ${freenect2_LIBRARIES}
 )
 
 
